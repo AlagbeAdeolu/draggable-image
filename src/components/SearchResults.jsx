@@ -14,8 +14,8 @@ const SearchResults = () => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 ">
         {results.map((item) => {
           return (
-            <div key={item.id} className="h-[500px] border">
-              <div className="h-[400px] w-full border rounded-md">
+            <div key={item.id} className="lg:h-[500px] border mt-8">
+              <div className=" lg:h-[400px] w-full border rounded-md">
                 <img
                   className="h-full w-full object-cover rounded-md"
                   src={item.largeImageURL}

@@ -38,7 +38,7 @@ function Images() {
       .then((res) => res.json())
       .then((data) => setImages(data.hits));
   }, []);
-  console.log(images);
+
   const onDragEnd = (e) => {
     const { active, over } = e;
     if (active.id === over.id) {
@@ -65,7 +65,7 @@ function Images() {
             arraySwap(items, activeIndex, overIndex).indexOf(id)
           }
         >
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {images.map((image) => {
               return <SortableImages key={image.id} image={image} />;
             })}

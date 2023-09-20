@@ -1,56 +1,63 @@
-import { createContext, useState } from "react"
+import { createContext, useState } from "react";
 
 const initialState = {
-    token: '',
-    isAuthenticated: false,
-    isLoading: false,
-    login: (token) => { },
-    logout: () => { }
-}
+  token: "",
+  isAuthenticated: false,
+  isLoading: false,
+  login: (token) => {},
+  logout: () => {},
+};
 
 const getStoredToken = () => {
-    const storedToken = localStorage.getItem('token')
-    return {token: storedToken}
-}
+  const storedToken = localStorage.getItem("token");
+  return { token: storedToken };
+};
 
-
-export const AuthContext = createContext(initialState)
+export const AuthContext = createContext(initialState);
 
 const AuthContextProvider = ({ children }) => {
-    let tokenData = getStoredToken()
-    let initialToken
-    if (tokenData) {
-        initialToken = tokenData.token
-    }
-    const [token, setToken] = useState(initialToken)
-    const [isLoading, setIsLoading] = useState(false)
-    const userIsLoggedIn = !!token
+  let tokenData = getStoredToken();
+  let initialToken;
+  if (tokenData) {
+    initialToken = tokenData.token;
+  }
+  const [token, setToken] = useState(initialToken);
+  const [isLoading, setIsLoading] = useState(false);
+  const userIsLoggedIn = !!token;
 
-    const loginHandler = (token) => {
-        setIsLoading(true)
-        setToken(token)
-        localStorage.setItem('token', token)
-        setIsLoading(false)
-    }
-    const logoutHandler = () => {
-        setIsLoading(true)
-        setToken(null)
-        localStorage.removeItem('token')
-        setIsLoading(false)
-    }
-    
-    const contextValue = {
-        token: token,
-        isAuthenticated: userIsLoggedIn,
-        login: loginHandler,
-        logout: logoutHandler,
-        isLoading: isLoading
-    }
+  const loginHandler = (token) => {
+    setIsLoading(true); // Set loading to true before making an asynchronous action
+    // Simulate an async action
+    setTimeout(() => {
+      setToken(token);
+      localStorage.setItem("token", token);
+      setIsLoading(false); // Set loading to false when the action is completed
+    }, 2000); // Adjust the delay as needed
+  };
 
-    return (
-        <AuthContext.Provider value={contextValue}>
-            {children}
-        </AuthContext.Provider>)
-}
+  const logoutHandler = () => {
+    setIsLoading(true); // Set loading to true before making an asynchronous action
+    // Simulate an async action
+    setTimeout(() => {
+      setToken(null);
+      localStorage.removeItem("token");
+      setIsLoading(false); // Set loading to false when the action is completed
+    }, 2000); // Adjust the delay as needed
+  };
 
-export default AuthContextProvider
+  const contextValue = {
+    token: token,
+    isAuthenticated: userIsLoggedIn,
+    login: loginHandler,
+    logout: logoutHandler,
+    isLoading: isLoading,
+  };
+
+  return (
+    <AuthContext.Provider value={contextValue}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthContextProvider;

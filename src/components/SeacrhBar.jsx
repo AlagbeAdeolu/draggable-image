@@ -40,7 +40,7 @@ const SearchBar = () => {
         }}
         placeholder="Search by tags"
       />
-      <button className="border border-gray-300 p-2 bg-green-200 " onClick={handleSearch}>Submit</button>
+      <button className="border border-gray-300 p-2 bg-red-600 rounded-lg" onClick={handleSearch}>Submit</button>
     </div>
   );
 };

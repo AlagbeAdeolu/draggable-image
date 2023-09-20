@@ -13,6 +13,7 @@ function App() {
     <Routes>
       <Route path="/" element={isAuthenticated ? <Home /> : <Login />} />
       <Route path='/search' element={<SearchResults />} />
+      <Route path='*' element={<p>NOT FOUND</p>} />
     </Routes>
 
 
