@@ -6,8 +6,10 @@ const SearchBar = () => {
   const [results, setResults] = useState([]);
   const navigate = useNavigate();
 
+
   const handleSearch = () => {
-    const apiKey = "39559354-a54d6d460a1baed9da791cf32"; // Replace with your Pixabay API key
+    const apiKey = process.env.REACT_APP_API_KEY_2
+    console.log(process.env)
     const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${searchQuery}`;
 
     fetch(apiUrl)

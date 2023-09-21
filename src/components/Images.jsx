@@ -28,7 +28,7 @@ function Images() {
   const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
 
   useEffect(() => {
-    const apiKey = "39559354-a54d6d460a1baed9da791cf32";
+    const apiKey = process.env.REACT_APP_API_KEY_2
     const query = "birds"; // Replace with your desired search query
     const perPage = 20; // Number of results per page
 
