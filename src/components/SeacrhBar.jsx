@@ -9,7 +9,6 @@ const SearchBar = () => {
 
   const handleSearch = () => {
     const apiKey = process.env.REACT_APP_API_KEY_2
-    console.log(process.env)
     const apiUrl = `https://pixabay.com/api/?key=${apiKey}&q=${searchQuery}`;
 
     fetch(apiUrl)
